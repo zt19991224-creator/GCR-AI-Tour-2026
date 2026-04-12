@@ -57,7 +57,11 @@ jobs:
 
       - name: Run podcast workflow
         env:
-          GH_TOKEN: ${{ github.token }}   # preferred for GitHub CLI
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_COPILOT_MODEL: gpt-5.4
+          GITHUB_COPILOT_TIMEOUT: "60"
+          GITHUB_COPILOT_CLI_PATH: copilot
+          GITHUB_COPILOT_LOG_LEVEL: info
         run: |
           python podcast_workflow.py -t "${{ steps.get-topic.outputs.topic }}"
 
