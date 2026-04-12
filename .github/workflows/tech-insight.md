@@ -98,7 +98,7 @@ mcp-scripts:
         default: 25
       time_window_hours:
         type: number
-        default: 24
+        default: 72
     run: |
       cd "$GITHUB_WORKSPACE"
       python3 -c "
@@ -124,7 +124,7 @@ mcp-scripts:
         required: true
       top_k:
         type: number
-        default: 12
+        default: 5
     run: |
       cd "$GITHUB_WORKSPACE"
       echo "{\"raw_signals_json\": $(echo $INPUT_RAW_SIGNALS_JSON | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))'), \"clusters_json\": $(echo $INPUT_CLUSTERS_JSON | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))'), \"top_k\": ${INPUT_TOP_K:-12}}" | python3 Lab-01-Tech-Insights/mcp-scripts/tech_cluster_or_fallback.py
@@ -268,6 +268,7 @@ mcp-scripts:
 - Company Radar（公司雷达）
 - DevTools Releases（工具链更新）
 - Research Watch（研究趋势）
+- 学习资源推荐（每个热点附带 1-2 个学习链接）
 
 ## 输入：聚类（JSON）
 {MessageText(Local.HotspotClusters)}
